@@ -1,0 +1,36 @@
+<div class="text-center">
+  <h1>War Simulator</h1>
+</div>
+<div class="px-4">
+  <div class="form-group mb-4">
+    <div class="row mt-lg-4">
+      <div class="col-2">
+        <label class="fw-bold">First player strategy</label>
+        <input type="text" class="form-control" placeholder="Enter first player strategy" [(ngModel)]="strategy">
+      </div>
+    </div>
+    <div class="row mt-lg-4">
+      <div class="col-2">
+        <label class="fw-bold">Second player strategy</label>
+        <input type="text" class="form-control" placeholder="Enter second player strategy" [(ngModel)]="strategy">
+      </div>
+    </div>
+    <div class="row mt-lg-4">
+      <div class="col-2">
+        <button class="btn btn-primary" (click)="getStatistics(strategy)" [disabled]="!isValid()">Get result</button>
+      </div>
+    </div>
+  </div>
+
+<div class="form-group ml-4">
+  <div class= "mt-4" *ngIf="loading">
+    <i class="fas fa-spinner fa-spin fa-2x"></i>
+  </div>
+  <div *ngIf="showStats()">
+    <h2 class="stats-label">Statistics</h2>
+    <span class="stats-item">First player won games: {{stats?.firstPlayerWonGames}}%</span>
+    <span class="stats-item">Second player won games: {{stats?.secondPlayerWonGames}}%</span>
+    <span class="stats-item">Draw games: {{stats?.draws}}%</span>
+  </div>
+</div>
+</div>

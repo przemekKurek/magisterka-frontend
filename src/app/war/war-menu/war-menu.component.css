@@ -1,0 +1,25 @@
+.stats-label,
+.stats-item {
+  display: block;
+  margin-bottom: 5px; /* Optional: Add some bottom margin for spacing between lines */
+}
+
+.margins {
+  margin-top: 15px;
+  margin-left: 5px;
+}
+
+.spinner {
+  border: 16px solid rgba(0, 0, 0, 0.1); /* Twice the border thickness */
+  border-top: 8px solid #3498db; /* Change the color if needed */
+  border-radius: 50%;
+  width: 160px; /* Twice the width */
+  height: 160px; /* Twice the height */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
