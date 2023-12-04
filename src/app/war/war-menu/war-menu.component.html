@@ -1,23 +1,23 @@
-<div class="text-center">
-  <h1>War Simulator</h1>
+<div class="px-4 pt-4">
+  <h3>War Simulator</h3>
 </div>
 <div class="px-4">
   <div class="form-group mb-4">
     <div class="row mt-lg-4">
       <div class="col-2">
         <label class="fw-bold">First player strategy</label>
-        <input type="text" class="form-control" placeholder="Enter first player strategy" [(ngModel)]="strategy">
+        <input type="text" class="form-control" placeholder="Enter first player strategy" [(ngModel)]="firstPlayerStrategy">
       </div>
     </div>
     <div class="row mt-lg-4">
       <div class="col-2">
         <label class="fw-bold">Second player strategy</label>
-        <input type="text" class="form-control" placeholder="Enter second player strategy" [(ngModel)]="strategy">
+        <input type="text" class="form-control" placeholder="Enter second player strategy" [(ngModel)]="secondPlayerStrategy">
       </div>
     </div>
     <div class="row mt-lg-4">
       <div class="col-2">
-        <button class="btn btn-primary" (click)="getStatistics(strategy)" [disabled]="!isValid()">Get result</button>
+        <button class="btn btn-primary" (click)="getStatisticsBothPlayersWithStrategy()" [disabled]="!isValid()">Get result</button>
       </div>
     </div>
   </div>

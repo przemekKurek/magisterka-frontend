@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RestWarService} from "../rest/rest-war.service";
+import {PlayersStrategyDTO} from "../rest/statisctics";
 
 @Component({
   selector: 'app-war-menu',
@@ -9,7 +10,8 @@ import {RestWarService} from "../rest/rest-war.service";
 export class WarMenuComponent implements OnInit {
 
   stats: any;
-  strategy: any;
+  firstPlayerStrategy: any;
+  secondPlayerStrategy: any;
   loading: boolean = false;
 
   constructor(private restWarService: RestWarService) {
@@ -19,13 +21,14 @@ export class WarMenuComponent implements OnInit {
   }
 
   isValid() {
-    return !!this.strategy;
+    return !!this.firstPlayerStrategy && !!this.secondPlayerStrategy;
   }
 
-  getStatistics(strategy: string) {
+  getStatisticsBothPlayersWithStrategy() {
     this.loading = true; // Show the spinner
+    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.secondPlayerStrategy);
 
-    this.restWarService.getStats(strategy).subscribe(
+    this.restWarService.gameWithStrategyForStatistics(playersStrategyDTO).subscribe(
       stats => {
         this.stats = stats;
       },
@@ -37,6 +40,7 @@ export class WarMenuComponent implements OnInit {
       }
     );
   }
+
 
   showStats() {
     // Add your logic to determine whether to show the stats or not
