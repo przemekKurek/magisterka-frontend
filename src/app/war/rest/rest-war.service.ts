@@ -2,6 +2,7 @@ import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {PlayersStrategyDTO, Statistics} from "./statisctics";
+import {StrengthDTO} from "./strength";
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,9 @@ export class RestWarService {
 
   compareStrategyWithBasicStrategies(strategy: string): Observable<Statistics[]> {
     return this.http.get<Statistics[]>(this.baseUrl + 'compare/' + strategy, { responseType: 'json' });
+  }
+
+  compareStrength(strength: StrengthDTO): Observable<Statistics[]> {
+    return this.http.post<Statistics[]>(this.baseUrl + 'strength-comparison', strength, { responseType: 'json' });
   }
 }

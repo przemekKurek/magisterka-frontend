@@ -9,6 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { CompareTableComponent } from './war/compare-table/compare-table.component';
 import { HelpComponent } from './help/help/help.component';
+import { CompareStrengthComponent } from './war/compare-strength/compare-strength.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { HelpComponent } from './help/help/help.component';
     WarMenuComponent,
     CompareTableComponent,
     HelpComponent,
+    CompareStrengthComponent,
   ],
   imports: [
     BrowserModule,
