@@ -4,6 +4,7 @@ export interface Statistics {
   draws: number;
   firstPlayerStrategy: string;
   secondPlayerStrategy: string;
+  averageAmountOfRounds: number;
 }
 
 export class PlayersStrategyDTO {
