@@ -5,6 +5,7 @@ export interface Statistics {
   firstPlayerStrategy: string;
   secondPlayerStrategy: string;
   averageAmountOfRounds: number;
+  detectedCycles: string[];
 }
 
 export class PlayersStrategyDTO {

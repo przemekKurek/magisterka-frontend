@@ -48,4 +48,37 @@ export class WarMenuComponent implements OnInit {
   }
 
 
+  getStatisticsAndDetectCycles() {
+    this.loading = true; // Show the spinner
+    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.secondPlayerStrategy);
+
+    this.restWarService.getStatisticsAndDetectCycles(playersStrategyDTO).subscribe(
+      stats => {
+        this.stats = stats;
+      },
+      () => {
+        // Handle error if needed
+      },
+      () => {
+        this.loading = false; // Hide the spinner when the request is complete
+      }
+    );
+  }
+
+  getStatisticsWithBreakingCycles() {
+    this.loading = true; // Show the spinner
+    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.secondPlayerStrategy);
+
+    this.restWarService.getStatisticsWithBreakingCycles(playersStrategyDTO).subscribe(
+      stats => {
+        this.stats = stats;
+      },
+      () => {
+        // Handle error if needed
+      },
+      () => {
+        this.loading = false; // Hide the spinner when the request is complete
+      }
+    );
+  }
 }

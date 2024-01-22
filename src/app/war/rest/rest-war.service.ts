@@ -29,4 +29,13 @@ export class RestWarService {
   compareStrength(strength: StrengthDTO): Observable<Statistics[]> {
     return this.http.post<Statistics[]>(this.baseUrl + 'strength-comparison', strength, { responseType: 'json' });
   }
+
+  getStatisticsAndDetectCycles(playersStrategyDTO: PlayersStrategyDTO): Observable<Statistics> {
+    return this.http.post<Statistics>(this.baseUrl + 'statistics-with-cycles', playersStrategyDTO, { responseType: 'json' });
+  }
+
+  getStatisticsWithBreakingCycles(playersStrategyDTO: PlayersStrategyDTO): Observable<Statistics> {
+    return this.http.post<Statistics>(this.baseUrl + 'statistics-with-breaking-cycles', playersStrategyDTO, { responseType: 'json' });
+  }
+
 }
