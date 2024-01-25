@@ -1,43 +1,48 @@
 <div class="py-4 px-4">
-<h3>Compare With Basic Strategies</h3>
+  <h3>Compare With Basic Strategies</h3>
   <div class="form-group mb-4">
     <div class="row mt-lg-4">
       <div class="col-2">
         <label class="fw-bold">Strategy</label>
-        <input type="text" class="form-control" placeholder="Enter first player strategy" [(ngModel)]="strategy">
+        <input type="text" class="form-control" placeholder="Enter strategy" [(ngModel)]="strategy">
       </div>
-    </div>
-    </div>
-    <div class="row mt-lg-4">
       <div class="col-2">
-        <button class="btn btn-primary" (click)="getStatistics()" [disabled]="!isValid()">Compare</button>
+        <label class="fw-bold">War Strategy</label>
+        <input type="text" class="form-control" placeholder="Enter war strategy" [(ngModel)]="warStrategy">
       </div>
     </div>
-<div class= "mt-4" *ngIf="loading">
-  <i class="fas fa-spinner fa-spin fa-2x"></i>
-</div>
-<table *ngIf="showTable()" class="table">
-  <thead>
-  <tr>
-    <th>First Player Strategy</th>
-    <th>First Player Won</th>
-    <th>Second Player Strategy</th>
-    <th>Second Player Won</th>
-    <th>Draws</th>
-    <th>Average rounds amount</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let row of statistics">
-    <td>{{ row.firstPlayerStrategy }}</td>
-    <td>{{ row.firstPlayerWonGames }}%</td>
-    <td>{{ row.secondPlayerStrategy }}</td>
-    <td>{{ row.secondPlayerWonGames }}%</td>
-    <td>{{ row.draws }}%</td>
-    <td>{{ row.averageAmountOfRounds }}</td>
-  </tr>
-  </tbody>
-</table>
-  <canvas #myChart *ngIf="showTable()" width="400" height="300"></canvas>
+  </div>
+  <div class="row mt-lg-4">
+    <div class="col-2">
+      <button class="btn btn-primary" (click)="getStatistics()" [disabled]="!isValid()">Compare</button>
+    </div>
+  </div>
+  <div class="mt-4" *ngIf="loading">
+    <i class="fas fa-spinner fa-spin fa-2x"></i>
+  </div>
+  <table *ngIf="showTable()" class="table">
+    <thead>
+    <tr>
+      <th>Player 1 Strategy / War Strategy</th>
+      <th>Player 1 Won</th>
+      <th>Player 2 Strategy / War Strategy</th>
+      <th>Player 2 Won</th>
+      <th>Draws</th>
+      <th>Average rounds amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of statistics">
+      <td>{{getFirstPlayerStrategy(row.playersStrategyDTO)}}
+        / {{getFirstPlayerWarStrategy(row.playersStrategyDTO)}}</td>
+      <td>{{ row.firstPlayerWonGames }}%</td>
+      <td>{{getSecondPlayerStrategy(row.playersStrategyDTO)}}
+        / {{getSecondPlayerWarStrategy(row.playersStrategyDTO)}}</td>
+      <td>{{ row.secondPlayerWonGames }}%</td>
+      <td>{{ row.draws }}%</td>
+      <td>{{ row.averageAmountOfRounds }}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
