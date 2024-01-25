@@ -14,16 +14,13 @@ export class RestWarService {
   constructor(private http: HttpClient) {
   }
 
-  getStats(strategy: string): Observable<Statistics> {
-    return this.http.get<Statistics>(this.baseUrl + 'two/' + strategy + '/statistics', { responseType: 'json' });
-  }
 
   gameWithStrategyForStatistics(playersStrategyDTO: PlayersStrategyDTO): Observable<Statistics> {
     return this.http.post<Statistics>(this.baseUrl + 'statistics', playersStrategyDTO, { responseType: 'json' });
   }
 
-  compareStrategyWithBasicStrategies(strategy: string): Observable<Statistics[]> {
-    return this.http.get<Statistics[]>(this.baseUrl + 'compare/' + strategy, { responseType: 'json' });
+  compareStrategyWithBasicStrategies(playersStrategyDTO: PlayersStrategyDTO): Observable<Statistics[]> {
+    return this.http.post<Statistics[]>(this.baseUrl + 'compare', playersStrategyDTO, { responseType: 'json' });
   }
 
   compareStrength(strength: StrengthDTO): Observable<Statistics[]> {

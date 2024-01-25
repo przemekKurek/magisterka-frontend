@@ -1,10 +1,11 @@
 <div class="px-4 py-4">
   <h3>Help</h3>
 </div>
+<h5>Strategies</h5>
 <table class="table">
   <thead>
   <tr>
-    <th>Sequence character</th>
+    <th class="w-25">Sequence character</th>
     <th>Description</th>
   </tr>
   </thead>
@@ -15,3 +16,27 @@
   </tr>
   </tbody>
 </table>
+
+<h5>War Strategies</h5>
+  <table class="table">
+    <thead>
+    <tr>
+      <th class="w-25">Sequence character</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of helpWarList">
+      <td>{{row.sequenceCharacter}}</td>
+      <td>{{ row.description }}</td>
+    </tr>
+    </tbody>
+</table>
+<h5 class="mt-2">Implementing strategies</h5>
+<div>
+  <span>War Master allows you to use simple and complex strategies.</span>
+  <br>
+  <span>To implement a simple strategy, one should use single-letter sequences e.g. R, A, N</span>
+  <br>
+  <span>To implement a complex strategy, one should use multi-letter sequences e.g. AAHR, RHL</span>
+</div>

@@ -5,14 +5,22 @@
   <div class="form-group mb-4">
     <div class="row mt-lg-4">
       <div class="col-2">
-        <label class="fw-bold">First player strategy</label>
-        <input type="text" class="form-control" placeholder="Enter first player strategy" [(ngModel)]="firstPlayerStrategy">
+        <label class="fw-bold">Player 1 strategy</label>
+        <input type="text" class="form-control" placeholder="Enter Player 1 strategy" [(ngModel)]="firstPlayerStrategy">
+      </div>
+      <div class="col-2">
+        <label class="fw-bold">Player 1 war strategy</label>
+        <input type="text" class="form-control" placeholder="Enter Player 1 strategy" [(ngModel)]="firstPlayerWarStrategy">
       </div>
     </div>
     <div class="row mt-lg-4">
       <div class="col-2">
-        <label class="fw-bold">Second player strategy</label>
-        <input type="text" class="form-control" placeholder="Enter second player strategy" [(ngModel)]="secondPlayerStrategy">
+        <label class="fw-bold">Player 2 strategy</label>
+        <input type="text" class="form-control" placeholder="Enter Player 2 strategy" [(ngModel)]="secondPlayerStrategy">
+      </div>
+      <div class="col-2">
+        <label class="fw-bold">Player 2 war strategy</label>
+        <input type="text" class="form-control" placeholder="Enter Player 1 strategy" [(ngModel)]="secondPlayerWarStrategy">
       </div>
     </div>
     <div class="row mt-lg-4">
@@ -36,8 +44,8 @@
   </div>
   <div *ngIf="showStats()">
     <h2 class="stats-label">Statistics</h2>
-    <span class="stats-item">First player won games: {{stats?.firstPlayerWonGames}}%</span>
-    <span class="stats-item">Second player won games: {{stats?.secondPlayerWonGames}}%</span>
+    <span class="stats-item">Player 1 won games: {{stats?.firstPlayerWonGames}}%</span>
+    <span class="stats-item">Player 2 won games: {{stats?.secondPlayerWonGames}}%</span>
     <span class="stats-item">Draw games: {{stats?.draws}}%</span>
     <span class="stats-item">Average rounds amount: {{stats?.averageAmountOfRounds}}</span>
     <div *ngIf="stats?.detectedCycles && stats.detectedCycles.length > 0">

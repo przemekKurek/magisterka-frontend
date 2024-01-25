@@ -71,11 +71,15 @@
           <label class="fw-bold">Strategy</label>
           <input type="text" class="form-control" placeholder="Five" [(ngModel)]="firstPlayerStrategy">
         </div>
+        <div class="col-2">
+          <label class="fw-bold">War Strategy</label>
+          <input type="text" class="form-control" placeholder="Five" [(ngModel)]="firstPlayerWarStrategy">
+        </div>
       </div>
     </div>
 
     <div class="row mt-lg-4">
-      <h4>Second player cards</h4>
+      <h4>Player 2 cards</h4>
       <div class="row">
         <div class="col-2">
           <label class="fw-bold">Ace</label>
@@ -87,67 +91,69 @@
         </div>
         <div class="col-2">
           <label class="fw-bold">Queen</label>
-          <input type="number" class="form-control" placeholder="Jack" [(ngModel)]="player2Queens">
+          <input type="number" class="form-control"  [(ngModel)]="player2Queens">
         </div>
         <div class="col-2">
           <label class="fw-bold">Jack</label>
-          <input type="number" class="form-control" placeholder="Ten" [(ngModel)]="player2Jacks">
+          <input type="number" class="form-control"  [(ngModel)]="player2Jacks">
         </div>
       </div>
       <div class="row">
         <div class="col-2">
           <label class="fw-bold">Ten</label>
-          <input type="number" class="form-control" placeholder="Ten" [(ngModel)]="player2Tens">
+          <input type="number" class="form-control"  [(ngModel)]="player2Tens">
         </div>
         <div class="col-2">
           <label class="fw-bold">Nine</label>
-          <input type="number" class="form-control" placeholder="Nine" [(ngModel)]="player2Nines">
+          <input type="number" class="form-control"  [(ngModel)]="player2Nines">
         </div>
         <div class="col-2">
           <label class="fw-bold">Eight</label>
-          <input type="number" class="form-control" placeholder="Eight" [(ngModel)]="player2Eights">
+          <input type="number" class="form-control"[(ngModel)]="player2Eights">
         </div>
         <div class="col-2">
           <label class="fw-bold">Seven</label>
-          <input type="number" class="form-control" placeholder="Seven" [(ngModel)]="player2Sevens">
+          <input type="number" class="form-control" [(ngModel)]="player2Sevens">
         </div>
       </div>
       <div class="row">
         <div class="col-2">
           <label class="fw-bold">Six</label>
-          <input type="number" class="form-control" placeholder="Six" [(ngModel)]="player2Sixes">
+          <input type="number" class="form-control"  [(ngModel)]="player2Sixes">
         </div>
         <div class="col-2">
           <label class="fw-bold">Five</label>
-          <input type="number" class="form-control" placeholder="Five" [(ngModel)]="player2Fives">
+          <input type="number" class="form-control"  [(ngModel)]="player2Fives">
         </div>
         <div class="col-2">
           <label class="fw-bold">Four</label>
-          <input type="number" class="form-control" placeholder="Four" [(ngModel)]="player2Fours">
+          <input type="number" class="form-control" [(ngModel)]="player2Fours">
         </div>
         <div class="col-2">
           <label class="fw-bold">Three</label>
-          <input type="number" class="form-control" placeholder="Three" [(ngModel)]="player2Threes">
+          <input type="number" class="form-control"  [(ngModel)]="player2Threes">
         </div>
       </div>
       <div class="row">
         <div class="col-2">
           <label class="fw-bold">Two</label>
-          <input type="number" class="form-control" placeholder="Six" [(ngModel)]="player2Twos">
+          <input type="number" class="form-control" [(ngModel)]="player2Twos" (change)="assignCards()">
         </div>
         <div class="col-2">
           <label class="fw-bold">Strategy</label>
-          <input type="text" class="form-control" placeholder="Five" [(ngModel)]="secondPlayerStrategy">
+          <input type="text" class="form-control" [(ngModel)]="secondPlayerStrategy" (change)="assignCards()">
+        </div>
+        <div class="col-2">
+          <label class="fw-bold">War Strategy</label>
+          <input type="text" class="form-control"  [(ngModel)]="secondPlayerWarStrategy" (change)="assignCards()">
         </div>
       </div>
     </div>
 
     <div *ngIf="!isValid()" class="row mt-lg-4">
-    <div class="col-8 bg-warning">
-    <span class="fw-bold" *ngIf="!isWholeDeckInGame()">Not having the whole deck!</span>
+    <span class="fw-bold bg-warning" *ngIf="!isWholeDeckInGame()">Not having the whole deck!</span>
       <br>
-    <span class="fw-bold "*ngIf="!equalNumberOfCards()">Players have different amount of cards!</span>
-    </div>
+    <span class="fw-bold bg-warning"*ngIf="!equalNumberOfCards()">Players have different amount of cards!</span>
     </div>
     <div class="row mt-lg-4">
       <div class="col-2">
@@ -165,8 +171,8 @@
           </div>
           <div *ngIf="showStats()">
             <h4 class="stats-label">Statistics</h4>
-            <span class="stats-item">First player won games: {{statistics?.firstPlayerWonGames}}%</span>
-            <span class="stats-item">Second player won games: {{statistics?.secondPlayerWonGames}}%</span>
+            <span class="stats-item">Player 1 won games: {{statistics?.firstPlayerWonGames}}%</span>
+            <span class="stats-item">Player 2 won games: {{statistics?.secondPlayerWonGames}}%</span>
             <span class="stats-item">Draw games: {{statistics?.draws}}%</span>
           </div>
         </div>

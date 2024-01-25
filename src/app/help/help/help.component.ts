@@ -18,6 +18,11 @@ export class HelpComponent implements OnInit {
     new Help('N', 'Greedy strategy. Never avoid wars')
         ]
 
+  helpWarList = [new Help('A', 'Gets all cards from war in ascending order'),
+    new Help('L', 'Gets all cards from war in descending order'),
+    new Help('R', 'Gets all cards from war in random order'),
+  ]
+
   ngOnInit(): void {
   }
 

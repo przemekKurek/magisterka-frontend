@@ -11,6 +11,8 @@ export class WarMenuComponent implements OnInit {
 
   stats: any;
   firstPlayerStrategy: any;
+  firstPlayerWarStrategy: any;
+  secondPlayerWarStrategy: any;
   secondPlayerStrategy: any;
   loading: boolean = false;
 
@@ -26,7 +28,8 @@ export class WarMenuComponent implements OnInit {
 
   getStatisticsBothPlayersWithStrategy() {
     this.loading = true; // Show the spinner
-    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.secondPlayerStrategy);
+    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.firstPlayerWarStrategy,
+      this.secondPlayerStrategy, this.secondPlayerWarStrategy);
 
     this.restWarService.gameWithStrategyForStatistics(playersStrategyDTO).subscribe(
       stats => {
@@ -50,8 +53,8 @@ export class WarMenuComponent implements OnInit {
 
   getStatisticsAndDetectCycles() {
     this.loading = true; // Show the spinner
-    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.secondPlayerStrategy);
-
+    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.firstPlayerWarStrategy,
+      this.secondPlayerStrategy, this.secondPlayerWarStrategy);
     this.restWarService.getStatisticsAndDetectCycles(playersStrategyDTO).subscribe(
       stats => {
         this.stats = stats;
@@ -67,8 +70,8 @@ export class WarMenuComponent implements OnInit {
 
   getStatisticsWithBreakingCycles() {
     this.loading = true; // Show the spinner
-    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.secondPlayerStrategy);
-
+    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.firstPlayerWarStrategy,
+      this.secondPlayerStrategy, this.secondPlayerWarStrategy);
     this.restWarService.getStatisticsWithBreakingCycles(playersStrategyDTO).subscribe(
       stats => {
         this.stats = stats;

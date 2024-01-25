@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Card} from "../rest/card";
 import {PlayersStrategyDTO, Statistics} from "../rest/statisctics";
 import {RestWarService} from "../rest/rest-war.service";
@@ -9,7 +9,7 @@ import {StrengthDTO} from "../rest/strength";
   templateUrl: './compare-strength.component.html',
   styleUrls: ['./compare-strength.component.css']
 })
-export class CompareStrengthComponent implements OnInit {
+export class CompareStrengthComponent implements OnChanges {
 
   player1Aces: number = 0;
   player1Kings: number = 0;
@@ -40,7 +40,9 @@ export class CompareStrengthComponent implements OnInit {
   player2Twos: number = 0;
 
   firstPlayerStrategy = 'R';
+  firstPlayerWarStrategy = 'R';
   secondPlayerStrategy = 'R';
+  secondPlayerWarStrategy = 'R';
 
   player1Cards: Card[] = [];
   player2Cards: Card[] = [];
@@ -52,11 +54,14 @@ export class CompareStrengthComponent implements OnInit {
   constructor(private restWarService: RestWarService) { }
 
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    this.assignCards();
   }
 
-  calculateCardsStrength() {
-    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.secondPlayerStrategy);
+  assignCards() {
+    this.player1Cards = [];
+    this.player2Cards = [];
+
     const player1Quantities: number[] =[this.player1Aces, this.player1Kings, this.player1Queens, this.player1Jacks, this.player1Tens,
       this.player1Nines, this.player1Eights, this.player1Sevens, this.player1Sixes, this.player1Fives, this.player1Fours,
       this.player1Threes, this.player1Twos]
@@ -68,6 +73,12 @@ export class CompareStrengthComponent implements OnInit {
       this.addCards(player1Quantities[index], this.player1Cards, value);
       this.addCards(player2Quantities[index], this.player2Cards, value);
     });
+  }
+
+  calculateCardsStrength() {
+    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.firstPlayerWarStrategy,
+      this.secondPlayerStrategy, this.secondPlayerWarStrategy);
+    this.assignCards();
 
     const strength = new StrengthDTO(this.player1Cards, this.player2Cards, playersStrategyDTO);
 
@@ -98,7 +109,7 @@ export class CompareStrengthComponent implements OnInit {
   }
 
   equalNumberOfCards() {
-    return this.player1Cards.length !== this.player2Cards.length;
+    return this.player1Cards.length === this.player2Cards.length;
   }
 
   isWholeDeckInGame() {
@@ -143,5 +154,8 @@ export class CompareStrengthComponent implements OnInit {
     this.player2Fours = 2;
     this.player2Threes = 2;
     this.player2Twos = 2;
+    this.assignCards();
   }
+
+
 }
