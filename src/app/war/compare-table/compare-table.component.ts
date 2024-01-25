@@ -22,7 +22,7 @@ export class CompareTableComponent {
 
   getStatistics() {
     this.loading = true; // Show the spinner
-    const playersStrategyDTO = new PlayersStrategyDTO(this.strategy, this.warStrategy, '', '');
+    const playersStrategyDTO = new PlayersStrategyDTO(this.strategy.toUpperCase(), this.warStrategy.toUpperCase(), '', '');
     this.restWarService.compareStrategyWithBasicStrategies(playersStrategyDTO).subscribe(
       stats => {
         this.statistics = stats;

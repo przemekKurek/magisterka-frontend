@@ -10,10 +10,10 @@ import {PlayersStrategyDTO} from "../rest/statisctics";
 export class WarMenuComponent implements OnInit {
 
   stats: any;
-  firstPlayerStrategy: any;
-  firstPlayerWarStrategy: any;
-  secondPlayerWarStrategy: any;
-  secondPlayerStrategy: any;
+  firstPlayerStrategy: string = 'R';
+  firstPlayerWarStrategy: string = 'R';
+  secondPlayerWarStrategy: string = 'R';
+  secondPlayerStrategy: string = 'R';
   loading: boolean = false;
 
   constructor(private restWarService: RestWarService) {
@@ -28,8 +28,8 @@ export class WarMenuComponent implements OnInit {
 
   getStatisticsBothPlayersWithStrategy() {
     this.loading = true; // Show the spinner
-    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.firstPlayerWarStrategy,
-      this.secondPlayerStrategy, this.secondPlayerWarStrategy);
+    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy.toUpperCase(), this.firstPlayerWarStrategy.toUpperCase(),
+      this.secondPlayerStrategy.toUpperCase(), this.secondPlayerWarStrategy.toUpperCase());
 
     this.restWarService.gameWithStrategyForStatistics(playersStrategyDTO).subscribe(
       stats => {
@@ -53,8 +53,8 @@ export class WarMenuComponent implements OnInit {
 
   getStatisticsAndDetectCycles() {
     this.loading = true; // Show the spinner
-    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.firstPlayerWarStrategy,
-      this.secondPlayerStrategy, this.secondPlayerWarStrategy);
+    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy.toUpperCase(), this.firstPlayerWarStrategy.toUpperCase(),
+      this.secondPlayerStrategy.toUpperCase(), this.secondPlayerWarStrategy.toUpperCase());
     this.restWarService.getStatisticsAndDetectCycles(playersStrategyDTO).subscribe(
       stats => {
         this.stats = stats;
@@ -70,8 +70,8 @@ export class WarMenuComponent implements OnInit {
 
   getStatisticsWithBreakingCycles() {
     this.loading = true; // Show the spinner
-    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.firstPlayerWarStrategy,
-      this.secondPlayerStrategy, this.secondPlayerWarStrategy);
+    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy.toUpperCase(), this.firstPlayerWarStrategy.toUpperCase(),
+      this.secondPlayerStrategy.toUpperCase(), this.secondPlayerWarStrategy.toUpperCase());
     this.restWarService.getStatisticsWithBreakingCycles(playersStrategyDTO).subscribe(
       stats => {
         this.stats = stats;

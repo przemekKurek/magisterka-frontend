@@ -76,8 +76,8 @@ export class CompareStrengthComponent implements OnChanges {
   }
 
   calculateCardsStrength() {
-    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy, this.firstPlayerWarStrategy,
-      this.secondPlayerStrategy, this.secondPlayerWarStrategy);
+    const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy.toUpperCase(), this.firstPlayerWarStrategy.toUpperCase(),
+      this.secondPlayerStrategy.toUpperCase(), this.secondPlayerWarStrategy.toUpperCase());
     this.assignCards();
 
     const strength = new StrengthDTO(this.player1Cards, this.player2Cards, playersStrategyDTO);
