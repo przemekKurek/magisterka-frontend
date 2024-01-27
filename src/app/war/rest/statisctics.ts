@@ -5,6 +5,7 @@ export interface Statistics {
   playersStrategyDTO: PlayersStrategyDTO;
   averageAmountOfRounds: number;
   averageAmountOfWars: number;
+  roundsWithCycles: number;
   detectedCycles: string[];
 }
 

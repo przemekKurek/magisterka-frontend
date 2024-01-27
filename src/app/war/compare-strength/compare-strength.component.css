@@ -23,3 +23,10 @@
   100% { transform: rotate(360deg); }
 }
 
+.icon-container {
+  cursor: pointer;
+}
+
+.icon-highlight {
+  color: red; /* Change the color as needed */
+}
