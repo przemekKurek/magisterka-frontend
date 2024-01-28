@@ -15,6 +15,7 @@ export class WarMenuComponent implements OnInit {
   secondPlayerWarStrategy: string = 'R';
   secondPlayerStrategy: string = 'R';
   loading: boolean = false;
+  showCycles: boolean = false;
 
   constructor(private restWarService: RestWarService) {
   }
@@ -27,6 +28,7 @@ export class WarMenuComponent implements OnInit {
   }
 
   getStatisticsBothPlayersWithStrategy() {
+    this.showCycles = false;
     this.loading = true; // Show the spinner
     const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy.toUpperCase(), this.firstPlayerWarStrategy.toUpperCase(),
       this.secondPlayerStrategy.toUpperCase(), this.secondPlayerWarStrategy.toUpperCase());
@@ -53,6 +55,7 @@ export class WarMenuComponent implements OnInit {
 
   getStatisticsAndDetectCycles() {
     this.loading = true; // Show the spinner
+    this.showCycles = true;
     const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy.toUpperCase(), this.firstPlayerWarStrategy.toUpperCase(),
       this.secondPlayerStrategy.toUpperCase(), this.secondPlayerWarStrategy.toUpperCase());
     this.restWarService.getStatisticsAndDetectCycles(playersStrategyDTO).subscribe(
@@ -70,6 +73,7 @@ export class WarMenuComponent implements OnInit {
 
   getStatisticsWithBreakingCycles() {
     this.loading = true; // Show the spinner
+    this.showCycles = true;
     const playersStrategyDTO = new PlayersStrategyDTO(this.firstPlayerStrategy.toUpperCase(), this.firstPlayerWarStrategy.toUpperCase(),
       this.secondPlayerStrategy.toUpperCase(), this.secondPlayerWarStrategy.toUpperCase());
     this.restWarService.getStatisticsWithBreakingCycles(playersStrategyDTO).subscribe(
