@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {Help} from "./help.model";
 
 @Component({
@@ -6,9 +6,10 @@ import {Help} from "./help.model";
   templateUrl: './help.component.html',
   styleUrls: ['./help.component.css']
 })
-export class HelpComponent implements OnInit {
+export class HelpComponent {
 
-  constructor() { }
+  constructor() {
+  }
 
   helpList = [new Help('H', 'Gets card with higher rank first.'),
     new Help('L', 'Gets card with lower rank first.'),
@@ -21,14 +22,12 @@ export class HelpComponent implements OnInit {
     new Help('S', 'Greedy strategy. Provoke war based on card ranks.'),
     new Help('C', 'Greedy strategy. Provoke war based on card strength.'),
     new Help('Z', 'Greedy strategy. Avoid wars based on card strength.'),
-        ]
+    new Help('X', 'Greedy strategy. Loosing type. Provoke war if there is a great chance of losing it.'),
+  ]
 
   helpWarList = [new Help('A', 'Gets all cards from war in ascending order.'),
     new Help('D', 'Gets all cards from war in descending order.'),
     new Help('R', 'Gets all cards from war in random order.'),
   ]
-
-  ngOnInit(): void {
-  }
 
 }

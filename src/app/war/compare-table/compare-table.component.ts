@@ -1,7 +1,6 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {PlayersStrategyDTO, Statistics} from "../rest/statisctics";
 import {RestWarService} from "../rest/rest-war.service";
-import { Chart } from 'chart.js';
 
 
 @Component({
@@ -57,7 +56,6 @@ export class CompareTableComponent {
     }
     return ''
   }
-
   getSecondPlayerStrategy(playersStrategyDTO: PlayersStrategyDTO): string {
     if (playersStrategyDTO != null) {
       return playersStrategyDTO.secondPlayerStrategySequence;
